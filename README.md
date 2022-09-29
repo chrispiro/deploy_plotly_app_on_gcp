@@ -46,7 +46,7 @@ Follow the instructions in the module `load_data.py` to load the data from the t
 
 ---
 
-## Step 2: Create Plotly visualizations
+## Step 3: Create Plotly visualizations
 
 A core component of our application is of course the plotly visualizations.
 
@@ -54,15 +54,15 @@ Follow the instructions in the module `create_charts.py` to create the plotly vi
 
 ---
 
-## Step 3: Create Dash App
+## Step 4: Create Dash App
 
-In this step, we will create our `main` module that imports the charts that we created in the previous step and defines the layout of our Dash App.
+In this step, we will create our main module `dash_app.py` that imports the charts that we created in the previous step and defines the layout of our Dash App.
 
-Follow the instructions in the module `main.py`.
+Follow the instructions in the main module `dash_app.py`.
 
 ---
 
-## Step 4: Deployment of the application to GCP App Engine
+## Step 5: Deployment of the application to GCP App Engine
 
 In this step we will see how to deploy the Dash application to App Engine, by defining the `app.yaml` file and using a flexible environment. The Flex environment allows our app to communicate with the other services in the GCP VPC (Virtual Private Cloud) network
 
@@ -74,7 +74,7 @@ gcloud app deploy
 
 ---
 
-## Step 5: Check that our application is running properly
+## Step 6: Check that our application is running properly
 
 Last step is to check that the application we built and deployed is working as expected.
 To do that, in GCP we can navigate to App Engine -> Services and click on the application we just deployed.

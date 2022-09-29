@@ -1,0 +1,12 @@
+#TODO: Insert the required parameters (Check app engine documentation) Note: Use flex environment
+
+runtime_config:
+  python_version: 3.7
+
+manual_scaling:
+  instances: 1
+  
+resources:
+  cpu: 1
+  memory_gb: 1
+  disk_size_gb: 10
