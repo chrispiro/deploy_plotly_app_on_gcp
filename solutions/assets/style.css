@@ -1,0 +1,92 @@
+/* assets/style.css */
+
+._dash-loading {
+    margin: auto;
+    color: transparent;
+    width: 0;
+    height: 0;
+    text-align: center;
+}
+  
+._dash-loading::after {
+content: '';
+display: inline-block;
+width: 2rem;
+height: 2rem;
+color: black;
+vertical-align: text-bottom;
+border: 0.25em solid currentColor;
+border-right-color: transparent;
+border-radius: 50%;
+-webkit-animation: spinner-border 0.75s linear infinite;
+animation: spinner-border 0.75s linear infinite;
+margin-top: 2rem;
+-webkit-animation: spin .8s ease infinite;
+animation: spin .8s ease infinite;
+}
+
+._dash-loading::before {
+    content: 'Please wait while data is being loaded...';
+    color: black;
+}
+
+h1, h2, navbar
+{
+   font-size: 1.2rem !important;
+   color: rgb(255, 255, 255) !important;
+   font-family: Helvetica !important;
+   text-align: center;
+}
+
+.navbar{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    background-color: #5275c8;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin: 0;
+    padding: 1rem;
+    border-radius: 1rem;
+}
+.navbar__gcp_logo {
+    width: 12rem;
+    float:left
+  }
+
+.navbar__dash_logo {
+    width: 12rem;
+    float:right
+  }
+
+h1, h2 {
+    background-color: #5275c8;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    padding: 1rem;
+    border-radius: 1rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+  }
+
+@-webkit-keyframes spin {
+    from {
+      -webkit-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+    to {
+      -webkit-transform: rotate(359deg);
+      transform: rotate(359deg);
+    }
+  }
+  @keyframes spin {
+    from {
+      -webkit-transform: rotate(0deg);
+      transform: rotate(0deg);
+    }
+    to {
+      -webkit-transform: rotate(359deg);
+      transform: rotate(359deg);
+    }
+  }

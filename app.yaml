@@ -1,9 +1,13 @@
-#TODO: Insert the required parameters (Check app engine documentation) Note: Use flex environment
+#TODO: Fill in the required parameters
+service: 
+runtime: 
+env: 
+entrypoint: 
 
 runtime_config:
   python_version: 3.7
 
-manual_scaling:
+manual_scaling: #We could also use automatic_scaling, to add more instances if our server utilization surpasses a given threshold
   instances: 1
   
 resources:

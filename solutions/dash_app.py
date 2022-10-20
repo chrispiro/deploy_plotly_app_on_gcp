@@ -8,7 +8,7 @@ from create_charts import compute_figures
 
 app = Dash(__name__)
 
-local_path='world_population.csv'
+local_path='../world_population.csv'
 
 ##By defining the serve_layout function, we are ensuring that the data is refreshed everytime the page is reloaded
 def serve_layout():
@@ -36,7 +36,18 @@ def serve_layout():
         ## Hint: Use dcc.Graph to add the plotly charts
         ## Hint: Add separators and titles between charts (e.g. html elements like H1, H2 with a chart title as children attribute)
 
-        ]
+        html.H1('World population map'),
+
+        dcc.Graph(id='0', figure=figures[0]),
+
+        html.H1('Evolution of population for each country'),
+
+        dcc.Graph(id='1', figure=figures[1]),
+
+        html.H1('World Population Percentage'),
+
+        dcc.Graph(id='2', figure=figures[2])
+    ]
 
     )
             
@@ -48,3 +59,4 @@ app.layout = serve_layout
 if __name__ == "__main__":
 
     ##TODO: Add command to run Dash server. (Tip: Specify 0.0.0.0 as host)
+    app.run_server(host="0.0.0.0", port=8080, debug=True)

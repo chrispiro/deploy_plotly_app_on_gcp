@@ -1,0 +1,6 @@
+/solutions
+
+*.ipynb
+*.md
+.git
+.gitignore

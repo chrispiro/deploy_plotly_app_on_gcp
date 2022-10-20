@@ -1,21 +1,41 @@
-# ING Code Breakfast - Deploy Dash app to GPC App Engine
+# ING Code Breakfast - Deploy Dash app to GCP App Engine
 
 In this code breakfast we will see how to create a data visualization app with [Dash](https://dash.plotly.com/) and deploy it to [GCP App Engine](https://cloud.google.com/appengine) so to make it available for our users.
 
+<img src="assets/app_preview.png" width="1000">
+
 This code assumes that a GCP environment is available. In particular the following services are required:
+
 - Big Query
 - Cloud Storage
 - Vertex AI notebooks
 - App Engine
 
---- 
+---
+
+The architecture of the application is the following:
+
+<img src="assets/architecture.png" width="800">
+
+---
+
+## Step 0: Explore the GCP environment
+
+In this step, we will perform a basic exploration of the Google Cloud Platform services involved.
+In particular, we will:
+
+- Search and Pin the services: BigQuery, Cloud Storage, Vertex AI and App Engine;
+- Visualize the dataset object in Cloud Storage;
+- Visualize the dataset in BigQuery.
+
+---
 
 ## Step 1: Create notebook
 
-First thing we need to do is creating a jupyter notebook in GCP Vertex AI workbench.
+Next, we will create a jupyter notebook in GCP Vertex AI workbench.
 To do that, we can navigate to Vertex AI -> Workbench -> User-managed notebooks -> New notebook -> Python3
 
-![Vertex AI](imgs/vertexai.png)
+![Vertex AI](assets/vertexai.png)
 
 Please specify:
 
@@ -31,34 +51,58 @@ git clone https://github.com/chrispiro/deploy_plotly_app_on_gcp.git
 ```
 
 And then we can install the required packages by running:
+
 ```
 pip install -r requirements.txt
 ```
 
 ---
 
-## Step 2: Read data from BigQuery or Cloud Storage
+## Step 2: Read data from BigQuery and Cloud Storage
 
 The dataset we are going to use is ['World Population Dataset'](https://www.kaggle.com/datasets/iamsouravbanerjee/world-population-dataset) from [Kaggle](https://www.kaggle.com/).
-For demonstration purposes, we have loaded the dataset in BigQuery and CloudStorage and we will show how to load the data from there into our application.
 
-Follow the instructions in the module `load_data.py` to load the data from the two services alternatively.
+The first half of the dataset will be in BigQuery, while the second half will be in Cloud Storage.
+We will load the two subsets from the two services and then merge the data into one dataframe.
+
+Complete the functions in the module `load_data.py` to load the data from the two services.
+
+In case of help, follow the official Google Cloud documentation:
+
+Download object from GCS: https://cloud.google.com/storage/docs/downloading-objects
+
+Load data from BigQuery: https://cloud.google.com/bigquery/docs/reference/libraries
+
+Note:
+You can use the `test_notebook.ipynb` to test the functions and see if they return the expected result.
 
 ---
 
 ## Step 3: Create Plotly visualizations
 
-A core component of our application is of course the plotly visualizations.
+A core component of our application is the plotly charts and visualizations.
 
-Follow the instructions in the module `create_charts.py` to create the plotly visualizations based on the data we loaded in the previous step.
+You can use the `test_notebook.ipynb` to play around with plotly, create a new chart and display it in the notebook.
+
+In case of help, follow the official Plotly documentation: https://plotly.com/python/
+
+Once you're happy with your chart, in the module `create_charts.py`, you can create a new function `create_figure_X` that runs the code and returns the figure. You will then need to call this function in the `compute_figures` function.
 
 ---
 
 ## Step 4: Create Dash App
 
-In this step, we will create our main module `dash_app.py` that imports the charts that we created in the previous step and defines the layout of our Dash App.
+In this step, we will define our Dash App layout.
 
-Follow the instructions in the main module `dash_app.py`.
+The main module `dash_app.py` will import all the functions that we defined in the previous steps and will display the charts in a web page.
+
+Follow the instructions in the main module `dash_app.py` and the official Dash documentation (together with basic layout example): https://dash.plotly.com/layout
+
+Note: If you're using your local machine (instead of jupyter notebook in GCP), you can run and test the web application on your local machine's browser by running in the terminal:
+
+```
+python dash_app.py
+```
 
 ---
 
@@ -66,7 +110,7 @@ Follow the instructions in the main module `dash_app.py`.
 
 In this step we will see how to deploy the Dash application to App Engine, by defining the `app.yaml` file and using a flexible environment. The Flex environment allows our app to communicate with the other services in the GCP VPC (Virtual Private Cloud) network
 
-You can then run the following command in the terminal to deploy the application:
+Follow the documentation (https://cloud.google.com/appengine/docs/flexible/reference/app-yaml?tab=python) to fill the missing fields in the `app.yaml` file and then run the following command in the terminal to deploy the application:
 
 ```
 gcloud app deploy
@@ -79,7 +123,6 @@ gcloud app deploy
 Last step is to check that the application we built and deployed is working as expected.
 To do that, in GCP we can navigate to App Engine -> Services and click on the application we just deployed.
 
-Replace this image:
-![App Engine](imgs/appengine.png)
+This will redirect us to the application web page. All the whitelisted users will be able to use the application by simply accessing the URL.
 
-This will redirect us to the application web page. Our users will be able to use the application by simply accessing the URL.
+Note: You might need to manually whitelist the authorized IP addresses (in App Engine -> Firewall rules)

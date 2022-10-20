@@ -9,6 +9,22 @@ def load_data_from_bigquery(project, dataset, table):
 
     #TODO: Write the code to load the data from BigQuery
 
+    # Construct a BigQuery client object.
+    bqclient = bigquery.Client()
+
+    #project = coo-risk-ews-d
+    #datest = code_breakfast
+    #table = world_population_1
+
+    query = """
+        SELECT * from `{}.{}.{}`
+    """.format(project, dataset, table)
+    
+    df1 = (
+        bqclient.query(query)
+        .result()
+        .to_dataframe()
+    )
 
     return df1
 
@@ -18,6 +34,12 @@ def load_data_from_cloudstorage(bucket, blob):
     '''
 
     #TODO: Write the code to load the data from GCS
+
+    #bucket = code_breakfast
+    #blob = world_population_2.csv
+    gcs_path = 'gs://{}/{}'.format(bucket, blob)
+
+    df2 = pd.read_csv(gcs_path, sep=';')
 
     return df2
 
