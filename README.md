@@ -56,6 +56,22 @@ And then we can install the required packages by running:
 pip install -r requirements.txt
 ```
 
+Note: You can also create a virtual environment using:
+
+```
+python3 -m venv myenv
+```
+
+```
+source myenv/bin/activate
+```
+
+And then add the virtual environment to the jupyter notebook:
+
+```
+python -m ipykernel install --user --name=myenv
+```
+
 ---
 
 ## Step 2: Read data from BigQuery and Cloud Storage

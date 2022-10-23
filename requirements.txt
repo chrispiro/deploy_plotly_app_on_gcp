@@ -5,6 +5,7 @@ python_dateutil==2.8.2
 pyarrow==8.0.0
 nbformat
 nb_black
+matplotlib
 google-cloud-appengine-logging
 google-cloud-audit-log
 google-cloud-bigquery

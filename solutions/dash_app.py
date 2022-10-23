@@ -8,7 +8,7 @@ from create_charts import compute_figures
 
 app = Dash(__name__)
 
-local_path='../world_population.csv'
+local_path='world_population.csv'
 
 ##By defining the serve_layout function, we are ensuring that the data is refreshed everytime the page is reloaded
 def serve_layout():
