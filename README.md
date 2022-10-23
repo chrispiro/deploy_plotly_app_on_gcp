@@ -60,9 +60,7 @@ Note: You can also create a virtual environment using:
 
 ```
 python3 -m venv myenv
-```
 
-```
 source myenv/bin/activate
 ```
 
