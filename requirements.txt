@@ -3,6 +3,8 @@ plotly==5.9.0
 dash==2.5.1
 python_dateutil==2.8.2
 pyarrow==8.0.0
+nbformat
+nb_black
 google-cloud-appengine-logging
 google-cloud-audit-log
 google-cloud-bigquery

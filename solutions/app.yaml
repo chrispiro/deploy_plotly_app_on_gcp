@@ -1,5 +1,5 @@
 #TODO: Fill in the required parameters
-service: code-breakfast-dashboard-group-1
+service: code-breakfast-dashboard
 runtime: python
 env: flex
 entrypoint: python3 dash_app.py

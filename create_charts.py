@@ -21,17 +21,15 @@ def create_figure_1(df):
 
     return fig1
 
-#TODO: Create new function: create_figure_x(df) with the code you wrote in the test_plotly_charts.ipynb
-
-
-#TODO: Create new function: create_figure_x(df) with the code you wrote in the test_plotly_charts.ipynb
-
+#TODO: Create new function: create_figure_2(df) with the code you wrote in the test_plotly_charts.ipynb
 
 
 def compute_figures(df):
+    
+    fig1 = create_figure_1(df)
 
     #TODO: Add the new figures in this code, and in the return List
 
-    fig1 = create_figure_1(df)
+    # fig2 = create_figure_2(df)
 
     return [fig1]
