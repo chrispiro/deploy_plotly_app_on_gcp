@@ -22,7 +22,8 @@ def create_figure_1(df):
     return fig1
 
 #TODO: Create new function: create_figure_2(df) with the code you wrote in the test_plotly_charts.ipynb
-
+#Args: df
+#Return: fig
 
 def compute_figures(df):
     
