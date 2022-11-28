@@ -12,7 +12,7 @@ def load_data_from_bigquery(project, dataset, table):
     # Construct a BigQuery client object.
     bqclient = bigquery.Client()
 
-    #project = coo-risk-ews-d
+    #project = 
     #datest = code_breakfast
     #table = world_population_1
 
